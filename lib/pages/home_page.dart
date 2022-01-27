@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_reader/pages/pages.dart';
+import 'package:qr_reader/providers/db_provider.dart';
 import 'package:qr_reader/providers/ui_provider.dart';
 import 'package:qr_reader/widgets/widgets.dart';
 
@@ -37,6 +38,9 @@ class _HomePageBody extends StatelessWidget {
     final uiProvider = Provider.of<UiProvider>(context);
     //Cambiar para mostrar la pagina respectiva
     final int currentIndex = uiProvider.selectedMenuOpt;
+    //Leer la base de datos TEMPORAL
+    // final tempScan = ScanModel(valor: 'https://muri-tec.com');
+    DBProvider.db.deleteAllScan().then(print);
     switch (currentIndex) {
       case 0:
         return const MapsPage();
